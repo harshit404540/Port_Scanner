@@ -80,7 +80,7 @@ def main():
             else:
                 service_name = ports.get(port, "Unknown Service")
                 print(f"[+] port:{port}({service_name}) is open")
-                result.append(f"{host}:{port} {service_name}")
+                result.append(f"{port} {service_name}")
                 s.close()
         print()
         print ("[+] Scanning Complete!")
