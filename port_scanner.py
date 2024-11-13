@@ -70,6 +70,7 @@ def main():
         print ("[+] Scanning Ports!")
         print()
         result = []
+        open_ports_found = False
         for port in ports:
             s = socket.socket()
             s.settimeout(1)
@@ -80,8 +81,11 @@ def main():
             else:
                 service_name = ports.get(port, "Unknown Service")
                 print(f"[+] port:{port}({service_name}) is open")
-                result.append(f"{port} {service_name}")
+                result.append(f"{host}:{port} {service_name}")
+                open_ports_found = True
                 s.close()
+        if not open_ports_found:
+            print("[+] No ports are active.")
         print()
         print ("[+] Scanning Complete!")
         print()
